@@ -5,7 +5,7 @@ Class {
 		'class',
 		'selector'
 	],
-	#category : 'MuTalk-Model'
+	#category : #'MuTalk-Model'
 }
 
 { #category : #'instance creation' }
@@ -34,13 +34,25 @@ TestCaseReference >> run [
 	| result |
 	result := self testCase run.
 	(result failuresSize > 0 or: [ result errorsSize > 0])
-		ifTrue: [TestsWithErrorsException signal].
+		ifTrue: [TestsWithErrorsException signalFor: self].
 	^ result
 ]
 
 { #category : #evaluating }
 TestCaseReference >> run: aTestResult [
 	^self testCase run: aTestResult
+]
+
+{ #category : #running }
+TestCaseReference >> runInC [
+	[
+		[ ^ (class >>  selector) runInC key ] valueWithin: (Duration seconds: 20)  onTimeout: [ TimedOut signal ]
+	] on: Exception do:[ :e |
+		e class = Notification ifTrue:[ e resume ].
+		e class = Halt ifTrue: [ e pass ].
+		e class = TimedOut 
+			ifTrue: [ ^ 'TimedOut' ]
+			ifFalse: [ ^ 'Others' ]].
 ]
 
 { #category : #evaluating }

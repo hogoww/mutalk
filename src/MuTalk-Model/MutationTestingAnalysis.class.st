@@ -13,7 +13,7 @@ Class {
 		'coverageAnalysisResult',
 		'logger'
 	],
-	#category : 'MuTalk-Model'
+	#category : #'MuTalk-Model'
 }
 
 { #category : #defaults }
@@ -96,6 +96,11 @@ MutationTestingAnalysis class >> for: testCases mutating: classes using: operato
 			with: aMutationsGenerationStrategy
 			loggingIn: aLogger;
 		yourself
+]
+
+{ #category : #defaults }
+MutationTestingAnalysis class >> mutanClass [
+	^ MutantEvaluation 
 ]
 
 { #category : #'instance creation' }
@@ -210,7 +215,7 @@ MutationTestingAnalysis >> generateResults [
 	particularResults := OrderedCollection new.
 	mutations
 		do: [:aMutation | logger logStartEvaluating: aMutation. 
-			particularResults add: (MutantEvaluation
+			particularResults add: (self class mutanClass
 					for: aMutation
 					using: testCases
 					following: mutantsEvaluationStrategy
@@ -268,7 +273,8 @@ MutationTestingAnalysis >> run [
 					self generateResults.].
 					true]
 						on: TestsWithErrorsException
-						do: [:ex | 
+						do: [:ex |
+							self halt.
 							self inform: 'Your tests have Errors or Failures. Please correct them.'.
 							ex return: false]
 ]
