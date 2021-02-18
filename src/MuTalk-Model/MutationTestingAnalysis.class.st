@@ -99,7 +99,7 @@ MutationTestingAnalysis class >> for: testCases mutating: classes using: operato
 ]
 
 { #category : #defaults }
-MutationTestingAnalysis class >> mutanClass [
+MutationTestingAnalysis class >> mutantClass [
 	^ MutantEvaluation 
 ]
 

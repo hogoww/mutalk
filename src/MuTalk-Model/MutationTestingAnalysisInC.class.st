@@ -5,7 +5,7 @@ Class {
 }
 
 { #category : #defaults }
-MutationTestingAnalysisInC class >> mutanClass [
+MutationTestingAnalysisInC class >> mutantClass [
 	^ MutantEvaluationInC 
 ]
 
