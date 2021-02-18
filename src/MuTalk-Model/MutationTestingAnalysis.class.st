@@ -215,7 +215,7 @@ MutationTestingAnalysis >> generateResults [
 	particularResults := OrderedCollection new.
 	mutations
 		do: [:aMutation | logger logStartEvaluating: aMutation. 
-			particularResults add: (self class mutanClass
+			particularResults add: (self class mutantClass
 					for: aMutation
 					using: testCases
 					following: mutantsEvaluationStrategy
