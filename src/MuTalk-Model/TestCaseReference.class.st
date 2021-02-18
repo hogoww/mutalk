@@ -33,6 +33,8 @@ TestCaseReference >> resources [
 TestCaseReference >> run [
 	| result |
 	result := self testCase run.
+
+	[ self runInC ] on: Exception do: [ TestsWithErrorsException new failsInC; signalFor: self ].
 	(result failuresSize > 0 or: [ result errorsSize > 0])
 		ifTrue: [TestsWithErrorsException signalFor: self].
 	^ result

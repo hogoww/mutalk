@@ -200,7 +200,7 @@ MutationTestingAnalysis >> generalResult [
 
 { #category : #running }
 MutationTestingAnalysis >> generateCoverageAnalysis [
-	coverageAnalysisResult := (CoverageAnalysis for: self modelClasses running: testCases) run; result
+	coverageAnalysisResult := (CoverageAnalysis for: self modelClasses running: testCases) run; result.
 ]
 
 { #category : #running }

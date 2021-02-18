@@ -9,7 +9,7 @@ Class {
 		'currentTest',
 		'testRunningElapsedTime'
 	],
-	#category : 'MuTalk-Model'
+	#category : #'MuTalk-Model'
 }
 
 { #category : #'instance creation' }
@@ -74,7 +74,8 @@ CoverageAnalysis >> methodReferences [
 ]
 
 { #category : #private }
-CoverageAnalysis >> methodToTestDictionaryFrom: wrappers [ 
+CoverageAnalysis >> methodToTestDictionaryFrom: wrappers [
+	self halt.
 	^ wrappers
 		inject: IdentityDictionary new
 		into: [:methodToTestDictionary :aWrapper | 
