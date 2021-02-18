@@ -1,7 +1,7 @@
 Class {
 	#name : #TestCoverageAnalysis,
 	#superclass : #TestCase,
-	#category : 'MuTalk-Tests'
+	#category : #'MuTalk-Tests'
 }
 
 { #category : #testing }
@@ -56,4 +56,16 @@ TestCoverageAnalysis >> testGettingTheTestCasesThatCoverAMethod [
 	testCases := analysis result testCasesThatCovers: ClassForTestingCoverage >> #aCoveredMethod.
 	self assert: ((testCases collect: [:each | each selector]) includes:#testCase1).
 	self deny: ((testCases collect: [:each | each selector]) includes:#testCase3).
+]
+
+{ #category : #testing }
+TestCoverageAnalysis >> testInstrumentingATestConsidersItInCoveredMethods [
+	| analysis searchedTestMethod |
+	analysis := CoverageAnalysis 
+		for: (Array with: TestClassForTestingCoverage)
+		running: TestClassForTestingCoverage suite tests.
+	analysis run.
+
+	searchedTestMethod := TestClassForTestingCoverage >> #testCase1.
+	self assert: ((analysis result testCasesThatCovers: searchedTestMethod) includes: searchedTestMethod)
 ]
