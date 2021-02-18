@@ -2,7 +2,8 @@ Class {
 	#name : #TestsWithErrorsException,
 	#superclass : #Error,
 	#instVars : [
-		'testCase'
+		'testCase',
+		'failsInC'
 	],
 	#category : #'MuTalk-Model'
 }
@@ -12,6 +13,22 @@ TestsWithErrorsException class >> signalFor: aTestCase [
 	^ self new
 		testCase: aTestCase;
 		signal
+]
+
+{ #category : #accessing }
+TestsWithErrorsException >> failsInC [
+	failsInC := true
+]
+
+{ #category : #accessing }
+TestsWithErrorsException >> initialize [
+	failsInC := false
+]
+
+{ #category : #accessing }
+TestsWithErrorsException >> signalFor: aTestCase [
+	testCase := aTestCase.
+	self signal
 ]
 
 { #category : #accessing }
