@@ -273,8 +273,7 @@ MutationTestingAnalysis >> run [
 					self generateResults.].
 					true]
 						on: TestsWithErrorsException
-						do: [:ex |
-							self halt.
+						do: [:ex | 
 							self inform: 'Your tests have Errors or Failures. Please correct them.'.
 							ex return: false]
 ]
