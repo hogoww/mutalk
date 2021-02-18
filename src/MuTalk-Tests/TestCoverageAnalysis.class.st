@@ -69,3 +69,15 @@ TestCoverageAnalysis >> testInstrumentingATestConsidersItInCoveredMethods [
 	searchedTestMethod := TestClassForTestingCoverage >> #testCase1.
 	self assert: ((analysis result testCasesThatCovers: searchedTestMethod) includes: searchedTestMethod)
 ]
+
+{ #category : #testing }
+TestCoverageAnalysis >> testTestCaseThatCoversATestShouldCoverItself [
+	| analysis searchedTestMethod |
+	analysis := CoverageAnalysis 
+		for: (Array with: TestClassForTestingCoverage)
+		running: TestClassForTestingCoverage suite tests.
+	analysis run.
+
+	searchedTestMethod := TestClassForTestingCoverage >> #testCase1.
+	self assert: ((analysis result testCasesThatCovers: searchedTestMethod) includes: searchedTestMethod)
+]
