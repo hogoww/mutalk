@@ -75,10 +75,9 @@ CoverageAnalysis >> methodReferences [
 
 { #category : #private }
 CoverageAnalysis >> methodToTestDictionaryFrom: wrappers [
-	self halt.
 	^ wrappers
 		inject: IdentityDictionary new
-		into: [:methodToTestDictionary :aWrapper | 
+		into: [:methodToTestDictionary :aWrapper |
 			self addTestsFrom: aWrapper to: methodToTestDictionary.
 			methodToTestDictionary]
 ]

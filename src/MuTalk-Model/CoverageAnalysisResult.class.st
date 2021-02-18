@@ -5,7 +5,7 @@ Class {
 		'methodToTestDictionary',
 		'timeToRunTests'
 	],
-	#category : 'MuTalk-Model'
+	#category : #'MuTalk-Model'
 }
 
 { #category : #'instance creation' }
@@ -36,7 +36,7 @@ CoverageAnalysisResult >> initializeFrom: aDictionaryOfMethodToTestCasesRelation
 
 { #category : #accessing }
 CoverageAnalysisResult >> testCasesThatCovers: aCompiledMethod [ 
-	^methodToTestDictionary at:aCompiledMethod ifAbsent:[OrderedCollection new.].
+	^methodToTestDictionary at: aCompiledMethod ifAbsent:[OrderedCollection new.].
 ]
 
 { #category : #accessing }

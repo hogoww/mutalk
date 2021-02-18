@@ -1,7 +1,7 @@
 Class {
 	#name : #TestCasesSelectionStrategy,
 	#superclass : #Object,
-	#category : 'MuTalk-Model-TestCases selection strategies'
+	#category : #'MuTalk-Model-TestCases selection strategies'
 }
 
 { #category : #printing }
@@ -20,8 +20,8 @@ TestCasesSelectionStrategy >> testCasesFromReferencies: aTestReferenceCollection
 	
 	|testCases selectedTestCases|
 	testCases := aTestReferenceCollection collect: [:testReference | testReference testCase].
-	selectedTestCases := self testCasesFor: testCases.
-	^selectedTestCases collect: [:testCase | TestCaseReference forTestCase: testCase]  
+	selectedTestCases := self testCasesFor: testCases. 
+	^selectedTestCases collect: [:testCase | testCase methodClass selector: testCase selector ]
 	
 
 ]

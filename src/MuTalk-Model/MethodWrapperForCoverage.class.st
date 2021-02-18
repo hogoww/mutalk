@@ -20,7 +20,8 @@ MethodWrapperForCoverage >> initializeOn: aMethodReference for: aCoverageAnalysi
 	tests := Set new.
 	
 	"If the mutation is on a test, it'll need to know that the test itself is part of the mutation"
-	aMethodReference compiledMethod ast isTest ifTrue: [ tests add: aMethodReference compiledMethod ].
+	aMethodReference compiledMethod ast isTest 
+		ifTrue: [ tests add: (TestCaseReference for: aMethodReference selector in: aMethodReference methodClass) ].
 ]
 
 { #category : #private }
