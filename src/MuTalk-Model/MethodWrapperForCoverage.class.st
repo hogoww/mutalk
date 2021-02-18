@@ -17,7 +17,10 @@ MethodWrapperForCoverage class >> on: aMethodReference for: aCoverageAnalysis [
 MethodWrapperForCoverage >> initializeOn: aMethodReference for: aCoverageAnalysis [
 	self initializeOn: aMethodReference.
 	coverageAnalysis := aCoverageAnalysis.
-	tests := Set new
+	tests := Set new.
+	
+	"If the mutation is on a test, it'll need to know that the test itself is part of the mutation"
+	aMethodReference compiledMethod ast isTest ifTrue: [ tests add: aMethodReference compiledMethod ].
 ]
 
 { #category : #private }
