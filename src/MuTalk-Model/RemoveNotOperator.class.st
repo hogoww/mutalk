@@ -1,20 +1,15 @@
 Class {
 	#name : #RemoveNotOperator,
-	#superclass : #MutantOperator,
-	#category : 'MuTalk-Model-Operators'
+	#superclass : #RemoveMessageSendOperator,
+	#category : #'MuTalk-Model-Operators'
 }
 
-{ #category : #printing }
-RemoveNotOperator >> description [
-	^'Remove #not'.
+{ #category : #accessing }
+RemoveNotOperator >> receiverType [
+	^ #Boolean
 ]
 
-{ #category : #applying }
-RemoveNotOperator >> expressionToReplace [ 
-	^'``@aBoolean not'
-]
-
-{ #category : #applying }
-RemoveNotOperator >> newExpression [
-	^'``@aBoolean'
+{ #category : #accessing }
+RemoveNotOperator >> selector [
+	^ #not
 ]

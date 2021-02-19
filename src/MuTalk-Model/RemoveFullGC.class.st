@@ -1,20 +1,15 @@
 Class {
 	#name : #RemoveFullGC,
-	#superclass : #MutantOperator,
+	#superclass : #RemoveMessageSendOperator,
 	#category : #'MuTalk-Model-Operators'
 }
 
-{ #category : #printing }
-RemoveFullGC >> description [
-	^ 'Removing call to FullGC'
+{ #category : #applying }
+RemoveFullGC >> receiverType [
+	^ #Spur32BitCoMemoryManager
 ]
 
 { #category : #applying }
-RemoveFullGC >> expressionToReplace [
-	^'``@Spur32BitCoMemoryManager fullGC'
-]
-
-{ #category : #applying }
-RemoveFullGC >> newExpression [
-	^ ''
+RemoveFullGC >> selector [
+	^ #fullGC
 ]
