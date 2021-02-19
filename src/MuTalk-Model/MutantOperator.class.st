@@ -5,7 +5,7 @@ Class {
 		'newNode',
 		'oldNode'
 	],
-	#category : 'MuTalk-Model-Operators'
+	#category : #'MuTalk-Model-Operators'
 }
 
 { #category : #accessing }
@@ -152,7 +152,7 @@ MutantOperator >> timesToApplyIn: aCompiledMethod with: aParseTree [
 	|searcher timesToApply|
 	searcher := RBParseTreeSearcher new.
 	timesToApply := 0.
-	searcher matches:self expressionToReplace do:[:node :answer | timesToApply := timesToApply + 1].
+	searcher matches: self expressionToReplace do:[:node :answer | timesToApply := timesToApply + 1].
 	searcher executeTree: aParseTree copy.
 	^timesToApply.
 	

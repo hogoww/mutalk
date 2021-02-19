@@ -1,10 +1,10 @@
 Class {
-	#name : #RemoveNotOperator,
+	#name : #RemoveKeepObjectInVMVariable1,
 	#superclass : #RemoveMessageSendMutantOperator,
 	#category : #'MuTalk-Model-Operators'
 }
 
 { #category : #accessing }
-RemoveNotOperator >> selector [
-	^ #not
+RemoveKeepObjectInVMVariable1 >> selector [
+	^ #keepObjectInVMVariable1:
 ]

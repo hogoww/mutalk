@@ -1,13 +1,8 @@
 Class {
 	#name : #RemoveFullGC,
-	#superclass : #RemoveMessageSendOperator,
+	#superclass : #RemoveMessageSendMutantOperator,
 	#category : #'MuTalk-Model-Operators'
 }
-
-{ #category : #applying }
-RemoveFullGC >> receiverType [
-	^ #Spur32BitCoMemoryManager
-]
 
 { #category : #applying }
 RemoveFullGC >> selector [
