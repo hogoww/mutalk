@@ -273,7 +273,8 @@ MutationTestingAnalysis >> run [
 					self generateResults.].
 					true]
 						on: TestsWithErrorsException
-						do: [:ex | 
+						do: [:ex |
+							ex hasFailedInC ifTrue: [ ex resume ].
 							self inform: 'Your tests have Errors or Failures. Please correct them.'.
 							ex return: false]
 ]

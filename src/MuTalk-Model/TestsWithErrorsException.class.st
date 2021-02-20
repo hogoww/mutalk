@@ -31,6 +31,11 @@ TestsWithErrorsException >> initialize [
 ]
 
 { #category : #accessing }
+TestsWithErrorsException >> isResumable [
+	^ true
+]
+
+{ #category : #accessing }
 TestsWithErrorsException >> signalFor: aTestCase [
 	testCase := aTestCase.
 	self signal
