@@ -27,9 +27,9 @@ MutationTestingAnalysisInC >> run [
 	testCases do: [ :aTestCase | 
 			[ aTestCase run ] 
 			on: TestsWithErrorsException 
-			do: [ :ex | 
-				ex failsInC 
-					ifTrue: [ testsFailingInC add: ex test ]
+			do: [ :ex |
+				ex hasFailedInC
+					ifTrue: [ testsFailingInC add: ex testCase ]
 					ifFalse:[
 						self halt.
 						self inform: 'Your tests have Errors or Failures. Please correct them.'.

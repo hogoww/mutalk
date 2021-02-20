@@ -31,10 +31,13 @@ TestCaseReference >> resources [
 
 { #category : #evaluating }
 TestCaseReference >> run [
-	| result |
+	| result exception |
 	result := self testCase run.
 
-	[ self runInC ] on: Exception do: [ TestsWithErrorsException new failsInC; signalFor: self ].
+	exception := TestsWithErrorsException new failsInC; yourself.
+	[ self runInC = 'test passed' 
+		ifFalse: [ exception signalFor: self ]
+	] on: Exception do: [ exception signalFor: self ].
 	(result failuresSize > 0 or: [ result errorsSize > 0])
 		ifTrue: [TestsWithErrorsException signalFor: self].
 	^ result

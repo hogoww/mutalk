@@ -21,6 +21,11 @@ TestsWithErrorsException >> failsInC [
 ]
 
 { #category : #accessing }
+TestsWithErrorsException >> hasFailedInC [
+	^ failsInC
+]
+
+{ #category : #accessing }
 TestsWithErrorsException >> initialize [
 	failsInC := false
 ]
